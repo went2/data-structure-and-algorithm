@@ -8,8 +8,9 @@ Node* head;
 void insertToFirst(Node* head, int val);
 void printLL(struct Node* head);
 
-// 在指定位置插入data, 需配合全局链表使用
+// 在指定位置插入data, 需配合定义在 global 链表使用
 void insert(int data, int n);
+void deleteNode(int position); // 删除给定位置的节点
 
 void insert(int data, int n) {
     Node* temp = (Node*)malloc(sizeof(Node));
@@ -30,6 +31,22 @@ void insert(int data, int n) {
     }
     (*temp).next = (*temp2).next;
     (*temp2).next = temp;
+}
+
+void deleteNode(int n) {
+    Node* temp = head;
+    if (n == 1) {
+        head = (*head).next;
+        free(temp);
+        return;
+    }
+    for (int i=0; i<n-2; i++) {
+        temp = (*temp).next;
+    }
+    Node* temp2 = NULL;
+    temp2 = (*temp).next;
+    temp = (*temp2).next;
+    free(temp2);
 }
 
 // insert an element after the head

@@ -11,6 +11,7 @@
 
 void printLL(struct Node* head);
 void insert(int data, int n);
+void deleteNode(int position);
 
 int main() {
     head = NULL; // head of linked list
@@ -20,6 +21,10 @@ int main() {
     insert(99, 2); // 234 99 1 44
     
     printLL(head);
+    deleteNode(1);
+    printLL(head); // 99 1 44
+    deleteNode(2);
+    printLL(head); // 99 44
     
     return 0;
 }

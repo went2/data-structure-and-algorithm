@@ -53,12 +53,32 @@ array 与 linked list 比较
 
 - 要存的数据越大，linked list 越省内存，因为每个节点的 pointer(4 bytes) 所占空间的比例越小。
 
-### Linked List —— Implementation in C/C++
+## Linked List —— Implementation in C/C++
 
-链表的入口是 pointer to the first node，这是唯一读取链表的方式。
+### 概念
+
+链表的入口是head，head 是指针类型，存第一个节点的地址。
 
 创建一个链表，就是创建一个保存指针的变量，这个变量类型是 `Node\*`, 值是下一个节点的内存地址。因为链表只能通过 head 元素访问，所以创建链表就是创建这个指针类型的 head，分配给它一个变量名，让它保存下一个节点的内存地址。
 
-创建一个节点，就是划出一块内存空间，就来存一个 `Node`, 在 C 中用 `malloc(int numOfBytes)`函数获取一块内存空间，返回值是这块 memory 起始位置的地址。
+创建一个节点，就是在内存的 heap 区域划出一块空间，存节点数据及指针, C 语言中用 `malloc(int numOfBytes)`函数获取一块内存空间，返回值是这块 memory 起始位置的地址。
+
+### 链表操作：
+
+删除节点：
+	- fix the links 
+	- free the space by build-in function `free()` 
+
+翻转链表(reversing a linked list)：
+	
+想象链表是人形蜈蚣（啊~好吓人！），翻转链表是将其中每个人掉个头，
+	从 `A -> B -> C -> D` 变为 `D -> C -> B -> A` 
+
+这是从整体角度看的，这个概念是人的设想，或叫逻辑上的翻转，不存在于计算机内部，如何将这个操作用c语言实现？描述为：将每个节点的 next 从当前的值变为指向该节点的节点地址。
+
+递归（recursion）实现链表倒转（reversing a linked list）
+
+如果用函数实现一个递归，函数自己调用自己，调用栈一个个向上叠加，直至达到return条件，然后从最顶部的调用栈开始return，执行上一个调用栈内后续的代码（如果还有的话），因为之前的调用栈没有return。
+
 
 
