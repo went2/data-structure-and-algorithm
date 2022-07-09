@@ -11,7 +11,8 @@ void printLL(struct Node* head);
 // 在指定位置插入data, 需配合定义在 global 链表使用
 void insert(int data, int n);
 void deleteNode(int position); // 删除给定位置的节点
-void reverseIterative();
+void reverseIterative(void);
+void reverseRecursion(Node* address);
 
 void insert(int data, int n) {
     Node* temp = (Node*)malloc(sizeof(Node));
@@ -62,13 +63,27 @@ void reverseIterative() {
         next = (*temp).next; // 先获取当前节点的下一个节点
 
         (*temp).next = prev; // 翻转：将当前节点指向前一个节点
-        
+
         // 为翻转下一个节点做准备
         prev = temp; // 保存当前节点为”前一个节点“
         temp = next; // 继续翻转当前操作的下一个节点
     }
     head = prev;
 }
+
+void reverseRecursion(Node* address) {
+    if ((*address).next == NULL) {
+        head = address;
+        return;
+    }
+
+    reverseRecursion((*address).next);
+    Node* nextAddress = (*address).next; // 当前节点的下一个节点
+    (*nextAddress).next = address; // 翻转: 让下一个节点指向当前节点
+    (*address).next = NULL; // 将当前节点指向NULL，在下一个调用栈中设置
+}
+
+
 
 // insert an element after the head
 // 按值传递参数，head 已是本地变量，怎么影响原链表的head？可以返回一个新 head

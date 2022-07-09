@@ -13,6 +13,7 @@ void printLL(struct Node* head);
 void insert(int data, int n);
 void deleteNode(int position);
 void reverseIterative();
+void reverseRecursion(Node* address);
 
 int main() {
     head = NULL; // head of linked list
@@ -22,7 +23,7 @@ int main() {
     insert(99, 2); // 234 99 2 44
     printLL(head);
     
-    reverseIterative();
+    reverseRecursion(head);
     printLL(head);
     return 0;
     
