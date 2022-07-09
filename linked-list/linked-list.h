@@ -11,6 +11,7 @@ void printLL(struct Node* head);
 // 在指定位置插入data, 需配合定义在 global 链表使用
 void insert(int data, int n);
 void deleteNode(int position); // 删除给定位置的节点
+void reverseIterative();
 
 void insert(int data, int n) {
     Node* temp = (Node*)malloc(sizeof(Node));
@@ -45,8 +46,28 @@ void deleteNode(int n) {
     }
     Node* temp2 = NULL;
     temp2 = (*temp).next;
-    temp = (*temp2).next;
+    (*temp).next = (*temp2).next;
     free(temp2);
+}
+
+void reverseIterative() {
+    Node *prev, *current, *next, *temp;
+    if (head == NULL) { // empty linked list
+        return;
+    }
+    temp = head;
+    prev = NULL;
+
+    while(temp != NULL) {
+        next = (*temp).next; // 先获取当前节点的下一个节点
+
+        (*temp).next = prev; // 翻转：将当前节点指向前一个节点
+        
+        // 为翻转下一个节点做准备
+        prev = temp; // 保存当前节点为”前一个节点“
+        temp = next; // 继续翻转当前操作的下一个节点
+    }
+    head = prev;
 }
 
 // insert an element after the head
@@ -60,9 +81,10 @@ void insertToFirst(Node** head, int val) {
 
 // traversal linked-list to print node value
 void printLL(struct Node* head) {
-    printf("Linked-List: \n");
+    printf("\nlinked list: \n");
     while(head != NULL) {
         printf("%d ", (*head).data);
         head = (*head).next;
     }
+    printf("\n");
 }
