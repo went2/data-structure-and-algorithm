@@ -13,10 +13,17 @@
 
 #endif /* doubly_linked_list_hpp */
 
+// linked list 操作函数，供外部使用的
 void insertAtHead(int data);
-struct Node* getNewNode(int data);
+void insertAtTail(int data);
 void printLL(void);
 void printLLReverse(void);
+
+// 工具函数，本文件内使用，供实现 linked list 操作
+struct Node* getNewNode(int data);
+void placeNodeToHead(struct Node* nodeAddress);
+void placeNodeToLast(struct Node* newNode, struct Node* lastNode);
+struct Node* toLastNode(struct Node* head);
 
 struct Node {
     int data;
@@ -33,9 +40,37 @@ void insertAtHead(int data) {
         head = newNodeAddress;
         return;
     }
-    (*head).prev = newNodeAddress;
-    (*newNodeAddress).next = head;
-    head = newNodeAddress;
+    placeNodeToHead(newNodeAddress);
+}
+
+void placeNodeToHead(struct Node* nodeAddress) {
+    (*head).prev = nodeAddress;
+    (*nodeAddress).next = head;
+    head = nodeAddress;
+}
+
+void placeNodeToLast(struct Node* newNode,struct Node* lastNode) {
+    (*lastNode).next = newNode;
+    (*newNode).prev = lastNode;
+}
+
+void insertAtTail(int data) {
+    struct Node* newNodeAddress = getNewNode(data);
+    struct Node* lastNode;
+    if(head == NULL) {
+        head = newNodeAddress;
+        return;
+    }
+    lastNode = toLastNode(head);
+    placeNodeToLast(newNodeAddress, lastNode);
+}
+
+struct Node* toLastNode(struct Node* head) {
+    struct Node* temp = head;
+    while ((*temp).next != NULL) {
+        temp = (*temp).next;
+    }
+    return temp;
 }
 
 Node* getNewNode(int data) {
@@ -55,8 +90,8 @@ Node* getNewNode(int data) {
      */
 }
 
-void printLL() {
-    Node* temp = head;
+void printLL(void) {
+    struct Node* temp = head;
     while(temp != NULL) {
         printf("%d ", (*temp).data);
         temp = (*temp).next;
@@ -64,5 +99,18 @@ void printLL() {
     printf("\n");
 }
 
+void printLLReverse(void) {
+    struct Node* temp;
+    
+    // go to the last node
+    temp = toLastNode(head);
+    
+    // traverse backward to print node data
+    while(temp != NULL) {
+        printf("%d ", (*temp).data);
+        temp = (*temp).prev;
+    }
 
+    printf("\n");
+}
 
