@@ -82,4 +82,6 @@ array 与 linked list 比较
 
 写递归先写退出条件(exit condition)
 
+### 双向链表(doubly linked list)
+
 
