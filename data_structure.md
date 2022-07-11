@@ -144,6 +144,54 @@ void insertAtTail(int data) {
 }
 ```
 
+## 栈 stack
+
+### stack as ADT
+
+栈是一种列表（list）结构，栈中的数据只能从一端出入，这一端是栈的顶端。后进先出 last in first out.
+
+#### stack operations
+
+实现一个栈结构，要实现以下基本操作（或叫 interface）：
+	- push()， 在栈中推入一个元素
+	- popup()，弹出栈顶的第一个元素
+	- top()，获取栈顶的第一个元素
+	- isEmpty()，查询栈中是否有元素
+
+以上这些操作的时间复杂度为常数O(1)，意思是在栈中有1个数据和1000个情况下，进行这些操作的时间都是一样的。
+
+#### 栈的使用场景
+
+- Function calls/Recursion, 函数调用/递归调用，函数作用域（scope，js中的叫法）一个一个叠在栈结构上
+- 编辑器中的撤销上一步操作 Ctrl+Z
+- 检查文本中括号是否成对出现
+- 浏览器中的浏览记录
+
+### 栈的实现（implementation of a stack）
+
+栈可在两种结构上实现：
+
+- Array
+- Link list
+
+#### 用 array 实现 stack 的思路
+
+有一个 `int top` 变量表示栈顶端的元素, top 初始值为 `-1`，表示没有任何元素，是个空栈。
+
+1. `top()` 表示为：`array[top]`， 因为用数组来实现，所以是数组的方式读取元素；
+2. `push(x)` 表示为： `top = top + 1; array[top] = x`;
+3. `popup()`表示为：`top = top - 1;`
+4. `isEmpty()`表示为：`top == -1`
+
+**处理 overflow**
+
+数组有固定大小，当数组存满时，就无法再做 push 操作，如何处理 overflow？
+
+要多做一步操作，在 push 时先判断数组是否已满，满了就另建一个更大的数组（两倍大小的），将当前所有数据拷贝到新数组，然后执行 push 操作，这叫动态数组技术 dynamic array
+
+
+
+
 
 
 
