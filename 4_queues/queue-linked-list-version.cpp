@@ -8,7 +8,7 @@
 #include "queue-linked-list-version.hpp"
 
 void Enqueue(int x);
-int Dequeue(void);
+void Dequeue(void);
 bool IsEmpty(void);
 int Front(void);
 void printQ(void);

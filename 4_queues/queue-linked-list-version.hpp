@@ -23,7 +23,7 @@ struct Node* front = NULL;
 struct Node* tear = NULL;
 
 void Enqueue(int x);
-int Dequeue(void);
+void Dequeue(void);
 bool IsEmpty(void);
 int Front(void);
 void printQ(void);
@@ -40,18 +40,18 @@ void Enqueue(int x) {
     tear = temp;
 }
 
-int Dequeue(void) {
+void Dequeue(void) {
     struct Node* temp = front;
-    int value = temp->data;
+    if(temp == NULL) {
+        return;
+    }
     
     if(front == tear) {
         front = tear = NULL;
         free(temp);
-        return value;
     }
     front = temp->next;
     free(temp);
-    return value;
 }
 
 bool IsEmpty(void) {
