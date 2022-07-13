@@ -144,7 +144,7 @@ void insertAtTail(int data) {
 }
 ```
 
-## [栈 stack](./3_stack/stack.md)
+## [栈 Stack](./3_stack/stack.md)
 
 ### 1. 概念(stack as ADT)
 
@@ -165,6 +165,8 @@ void insertAtTail(int data) {
 #### 3.2 例2：翻转链表
 
 #### 3.3 例3：检查括号是否成对出现
+
+## [队列 Queues](./4_queues/queues.md)
 
 
 

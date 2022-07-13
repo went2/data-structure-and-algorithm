@@ -177,6 +177,12 @@ void Reverse() {
 	- 一个源字符串，用于判断它里面的括号是否成对出现；
 	- 一个栈，用于存放/移除`开始括号`
 
+### 例4：计算前缀、后缀形式的表达式
+
+Evaluation of prefix and postfix expression
+
+略过。
+
 
 
 
