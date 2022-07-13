@@ -48,9 +48,9 @@ void Dequeue(void) {
     
     if(front == tear) {
         front = tear = NULL;
-        free(temp);
+    } else {
+        front = temp->next;
     }
-    front = temp->next;
     free(temp);
 }
 
