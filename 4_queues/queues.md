@@ -45,7 +45,7 @@ Queue 是一种列表结构，有前后两个方向，从 queue 中插入数据�
 
 	- 初始化队列时，将`front`、`rear` 设为 `-1`，表示队列为空；
 	- EnQueue(x)， `rear = rear + 1; arr[rear] = x`，要先处理队列为空、队列已满这两种边界情况；
-	- DeQueue()，`front = front + 1`，要先处理队列为空，队列只有一个值这梁红边界情况；
+	- DeQueue()，`front = front + 1`，要先处理队列为空，队列只有一个值这两个边界情况；
 	- IsEmpty(), `return front == -1 && rear == -1`；
 	- IsFull(), 环形数组的尾部加1是否等于头部，`return (rear + 1)%(MAX_SIZE) == front`
 

@@ -168,7 +168,15 @@ void insertAtTail(int data) {
 
 ## [队列 Queues](./4_queues/queues.md)
 
+### 1. 概念 Queue as ADT
 
+#### 1.1 Operations
+
+#### 1.2 使用场景
+
+### 2. 队列的实现
+
+#### 2.1 用（环形）数组实现队列
 
 
 
