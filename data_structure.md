@@ -53,7 +53,7 @@ array 与 linked list 比较
 
 - 要存的数据越大，linked list 越省内存，因为每个节点的 pointer(4 bytes) 所占空间的比例越小。
 
-## [链表 Linked List](./1_linked-list/linked-list.md)
+## [单向链表 Linked List](./1_linked-list/linked-list.md)
 
 ### 1. 概念
 
@@ -160,6 +160,18 @@ void insertAtTail(int data) {
 ### 2. 队列的实现
 
 #### 2.1 用（环形）数组实现队列
+
+## [树 Tree](./5_trees/trees.md)
+
+### 1. 概念 trees as ADT
+
+#### 1.1 树的术语
+
+#### 1.2 树的特征
+
+#### 1.3 树的分类
+
+#### 1.4 树结构的使用场景
 
 
 
