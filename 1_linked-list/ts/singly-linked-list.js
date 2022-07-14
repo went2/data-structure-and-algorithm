@@ -61,6 +61,10 @@ var SinglyLinkedList = /** @class */ (function () {
         }
     };
     SinglyLinkedList.prototype.deleteNode = function (pos) {
+        if (pos < 1) {
+            console.log('DeleteError: 位置不能小于1');
+            return;
+        }
         if (this.head === null) {
             console.log('Error: empty linked list');
             return;
@@ -77,22 +81,11 @@ var SinglyLinkedList = /** @class */ (function () {
         }
         // 找到 pos-1 号的node
         var temp = this.head;
-        for (var i = 0; i < pos - 1; i++) {
+        for (var i = 0; i < pos - 2; i++) {
             temp = temp.next;
         }
         temp.next = temp.next.next;
         this.decreaseLength();
-    };
-    SinglyLinkedList.prototype.printLL = function () {
-        if (this.head === null) {
-            console.log('empty linked list');
-            return;
-        }
-        var temp = this.head;
-        while (temp !== null) {
-            temp = temp.next;
-            console.log(temp.data);
-        }
     };
     // increasing length of linked list by 1
     SinglyLinkedList.prototype.increaseLength = function () {

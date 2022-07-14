@@ -100,18 +100,6 @@ class SinglyLinkedList {
         this.decreaseLength();
     }
 
-    printLL(): void {
-        if(this.head === null) {
-            console.log('empty linked list');
-            return;
-        }
-        let temp: LinkNode = this.head;
-        while(temp !== null) {
-            console.log(temp.data);
-            temp = temp.next;
-        }
-    }
-
     // increasing length of linked list by 1
     increaseLength() {
         this.length++;

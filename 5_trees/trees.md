@@ -102,6 +102,8 @@ struct Node {
 
 在二分查找树执行查询的操作跟对一个已排序的数组执行二分查找的操作过程相同。
 
+在堆内存中创建的对象，没有变量名(identifier)，只能通过 pointer 访问，`malloc` 函数及 `new` 操作符返回的都是 pointer
+
 
 
 
