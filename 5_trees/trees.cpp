@@ -11,6 +11,8 @@ using namespace std;
 
 BstNode* Insert(BstNode* root, int data);
 bool Search(BstNode* root, int data);
+int findMin(BstNode* root);
+int findMax(BstNode* root);
 
 int main() {
     BstNode* root = NULL; // create a empty tree
@@ -21,13 +23,8 @@ int main() {
     root = Insert(root, 15);
     root = Insert(root, 34);
     
-    int num;
-    cout<<"Enter a number\n";
-    cin>>num;
-    if (Search(root, num))
-        cout<<"Found\n";
-    else
-        cout<<"Not Found\n";
+    printf("the min value of tree: %d\n", findMin(root));
+    printf("the max value of tree: %d\n", findMax(root));
     
     return 0;
 }

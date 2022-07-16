@@ -22,6 +22,9 @@ struct BstNode {
 BstNode* Insert(BstNode* root, int data);
 bool Search(BstNode* root, int data);
 
+int findMin(BstNode* root);
+int findMax(BstNode* root);
+
 // 工具函数
 BstNode* GetNewNode(int data);
 
@@ -51,4 +54,20 @@ BstNode* GetNewNode(int data) {
     temp->data = data;
     temp->left = temp->right = NULL;
     return temp;
+}
+
+int findMin(BstNode* root) {
+    BstNode* temp = root;
+    while(temp->left != NULL) {
+        temp = temp->left;
+    }
+    return temp->data;
+}
+
+int findMax(BstNode* root) {
+    BstNode* temp = root;
+    while(temp->right != NULL) {
+        temp = temp->right;
+    }
+    return temp->data;
 }
