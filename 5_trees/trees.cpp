@@ -13,6 +13,8 @@ BstNode* Insert(BstNode* root, int data);
 bool Search(BstNode* root, int data);
 int findMin(BstNode* root);
 int findMax(BstNode* root);
+int findMinRe(BstNode* root);
+int findMaxRe(BstNode* root);
 
 int main() {
     BstNode* root = NULL; // create a empty tree
@@ -25,6 +27,8 @@ int main() {
     
     printf("the min value of tree: %d\n", findMin(root));
     printf("the max value of tree: %d\n", findMax(root));
+    printf("the min value of tree: %d\n", findMinRe(root));
+    printf("the max value of tree: %d\n", findMaxRe(root));
     
     return 0;
 }
