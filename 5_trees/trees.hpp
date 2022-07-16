@@ -29,6 +29,7 @@ int findMin(BstNode* root);
 int findMax(BstNode* root);
 int findMinRe(BstNode* root);
 int findMaxRe(BstNode* root);
+int findHeight(BstNode* root);
 
 // 工具函数
 BstNode* GetNewNode(int data);
@@ -107,4 +108,14 @@ int findMaxRe(BstNode* root) {
         return root->data;
     }
     return findMaxRe(root->right);
+}
+
+int findHeight(BstNode* root) {
+    // 节点高度指它到最远叶子节点经过的路径
+    // 算法: H(root) = max( H(root->left), H(root->right) ) + 1
+    
+    if(root == NULL) {
+        return -1;
+    }
+    return max(findHeight(root->left), findHeight(root->right)) + 1;
 }
