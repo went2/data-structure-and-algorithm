@@ -218,7 +218,43 @@ bool isBstUtil(Node* root, int minValue, int maxValue) {
 	- case2: 只有一个子节点，做法：让它的父节点，直接指向它的子节点；
 	- case3: 有两个子节点，做法：将它的值设为右边子树的最小值，然后删除右边子树的最小值这个节点（或者将它的值设为左边子树的最大值，然后删除左边子树的最大值这个节点）；
 
+写法示例：
 
+```c++
+BstNode* deleteNode(BstNode* root, int value) {
+    if(root == NULL) return root;
+    else if(value < root->data)
+        root->left = deleteNode(root->left, value);
+    else if(value > root->data)
+        root->right = deleteNode(root->right, value);
+    else { // 已找到该节点，准备删除
+        // no child
+        if(root->left == NULL && root->right == NULL) {
+            delete root;
+            root = NULL;
+        }
+        // 1 child
+        else if(root->left == NULL) {
+            BstNode* temp = root;
+            root = temp->right;
+            delete temp;
+        }
+        else if(root->right == NULL) {
+            BstNode* temp = root;
+            root = temp->left;
+            delete temp;
+        }
+        // 2 children
+        else {
+            BstNode* temp = findMinRe(root->right);
+            root->data = temp->data;
+            // 删除右边子树的最小值的节点，该节点无左树
+            root->right = deleteNode(root->right, temp->data);
+        }
+    }
+    return root;
+}
+```
 
 
 
