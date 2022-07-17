@@ -38,8 +38,12 @@ void levelOrder(BstNode* root);
 // 深度优先遍历
 void preOrder(BstNode* root);
 
+// 检测一个二分树是否是二分查找树
+bool isBST(BstNode* root);
+
 // 工具函数
 BstNode* GetNewNode(int data);
+bool isBstUtil(BstNode* root, int minValue, int maxValue);
 
 // 递归方式插入节点，写起来优雅，理解需要花时间
 // 在树中插入节点的意思，需要从树的根节点开始，通过不断比较，将一个新节点添加为父节点的左节点或右节点
@@ -157,3 +161,21 @@ void preOrder(BstNode* root) {
     if(root->left != NULL) preOrder(root->left);
     if(root->right != NULL) preOrder(root->right);
 }
+
+bool isBST(BstNode* root) {
+    return isBstUtil(root, INT_MIN, INT_MAX);
+}
+
+
+bool isBstUtil(BstNode* root, int minValue, int maxValue) {
+    if(root == NULL) return true;
+    
+    // 每个节点的值要在一个范围内
+    if(root->data > minValue && root->data < maxValue
+       && isBstUtil(root->left, minValue, root->data)
+       && isBstUtil(root->right, root->data, maxValue))
+        return true;
+    else return false;
+}
+
+

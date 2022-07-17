@@ -18,6 +18,7 @@ int findMaxRe(BstNode* root);
 int findHeight(BstNode* root);
 void levelOrder(BstNode* root);
 void preOrder(BstNode* root);
+bool isBST(BstNode* root);
 
 int main() {
     BstNode* root = NULL; // create a empty tree
@@ -35,6 +36,7 @@ int main() {
     levelOrder(root);
     cout<<"\n";
     preOrder(root);
+    cout<<"\nis BST: " << isBST(root) << std::endl;
     
     return 0;
 }
