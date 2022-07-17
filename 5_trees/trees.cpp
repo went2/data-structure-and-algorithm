@@ -13,11 +13,12 @@ BstNode* Insert(BstNode* root, int data);
 bool Search(BstNode* root, int data);
 int findMin(BstNode* root);
 int findMax(BstNode* root);
-int findMinRe(BstNode* root);
+BstNode* findMinRe(BstNode* root);
 int findMaxRe(BstNode* root);
 int findHeight(BstNode* root);
 void levelOrder(BstNode* root);
 void preOrder(BstNode* root);
+void inOrder(BstNode* root);
 bool isBST(BstNode* root);
 
 int main() {
@@ -29,14 +30,12 @@ int main() {
     root = Insert(root, 15);
     root = Insert(root, 34);
     
-    printf("the min value of tree: %d\n", findMinRe(root));
-    printf("the max value of tree: %d\n", findMaxRe(root));
-    printf("the height of tree: %d\n", findHeight(root));
-    
-    levelOrder(root);
+    inOrder(root);
     cout<<"\n";
-    preOrder(root);
-    cout<<"\nis BST: " << isBST(root) << std::endl;
+    deleteNode(root, 15);
+    inOrder(root);
+    
+    cout<<"\nroot pointer"<< root << std::endl;
     
     return 0;
 }

@@ -28,7 +28,7 @@ bool Search(BstNode* root, int data);
 
 int findMin(BstNode* root);
 int findMax(BstNode* root);
-int findMinRe(BstNode* root);
+BstNode* findMinRe(BstNode* root);
 int findMaxRe(BstNode* root);
 int findHeight(BstNode* root);
 
@@ -37,15 +37,18 @@ void levelOrder(BstNode* root);
 
 // 深度优先遍历
 void preOrder(BstNode* root);
+void inOrder(BstNode* root);
 
 // 检测一个二分树是否是二分查找树
 bool isBST(BstNode* root);
+
+// 从二分查找树中删除一个节点
+BstNode* deleteNode(BstNode* root, int value);
 
 // 工具函数
 BstNode* GetNewNode(int data);
 bool isBstUtil(BstNode* root, int minValue, int maxValue);
 
-// 递归方式插入节点，写起来优雅，理解需要花时间
 // 在树中插入节点的意思，需要从树的根节点开始，通过不断比较，将一个新节点添加为父节点的左节点或右节点
 // 递归即实现沿着树层层向下查找
 BstNode* Insert(BstNode* root, int data) {
@@ -98,14 +101,14 @@ int findMax(BstNode* root) {
     return root->data;
 }
 
-int findMinRe(BstNode* root) {
+BstNode* findMinRe(BstNode* root) {
     // 写递归先写终止条件
     if(root == NULL) {
         cout << "Error: empty tree.\n";
-        return -1;
+        return NULL;
     }
     else if(root->left == NULL) {
-        return root->data;
+        return root;
     }
     return findMinRe(root->left);
 }
@@ -131,14 +134,12 @@ int findHeight(BstNode* root) {
     return max(findHeight(root->left), findHeight(root->right)) + 1;
 }
 
-
 void levelOrder(BstNode* root) {
     if(root == NULL) {
         return;
     }
     queue<BstNode*> Q;
     Q.push(root);
-    
     
     while(!Q.empty()) {
         BstNode* temp = Q.front();
@@ -162,6 +163,16 @@ void preOrder(BstNode* root) {
     if(root->right != NULL) preOrder(root->right);
 }
 
+void inOrder(BstNode* root) {
+    if(root == NULL) {
+        return;
+    }
+    
+    if(root->left != NULL) inOrder(root->left);
+    cout << root->data << " ";
+    if(root->right != NULL) inOrder(root->right);
+}
+
 bool isBST(BstNode* root) {
     return isBstUtil(root, INT_MIN, INT_MAX);
 }
@@ -171,11 +182,46 @@ bool isBstUtil(BstNode* root, int minValue, int maxValue) {
     if(root == NULL) return true;
     
     // 每个节点的值要在一个范围内
+    // 对于左节点，设置其最大值为当前值，对于右节点，设置其最小值为当前值
     if(root->data > minValue && root->data < maxValue
        && isBstUtil(root->left, minValue, root->data)
        && isBstUtil(root->right, root->data, maxValue))
         return true;
     else return false;
+}
+
+BstNode* deleteNode(BstNode* root, int value) {
+    if(root == NULL) return root;
+    else if(value < root->data)
+        root->left = deleteNode(root->left, value);
+    else if(value > root->data)
+        root->right = deleteNode(root->right, value);
+    else { // 已找到该节点，准备删除
+        // no child
+        if(root->left == NULL && root->right == NULL) {
+            delete root;
+            root = NULL;
+        }
+        // 1 child
+        else if(root->left == NULL) {
+            BstNode* temp = root;
+            root = temp->right;
+            delete temp;
+        }
+        else if(root->right == NULL) {
+            BstNode* temp = root;
+            root = temp->left;
+            delete temp;
+        }
+        // 2 children
+        else {
+            BstNode* temp = findMinRe(root->right);
+            root->data = temp->data;
+            // 删除右边子树的最小值的节点，该节点无左树
+            root->right = deleteNode(root->right, temp->data);
+        }
+    }
+    return root;
 }
 
 
