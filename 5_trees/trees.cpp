@@ -16,6 +16,8 @@ int findMax(BstNode* root);
 int findMinRe(BstNode* root);
 int findMaxRe(BstNode* root);
 int findHeight(BstNode* root);
+void levelOrder(BstNode* root);
+void preOrder(BstNode* root);
 
 int main() {
     BstNode* root = NULL; // create a empty tree
@@ -26,11 +28,13 @@ int main() {
     root = Insert(root, 15);
     root = Insert(root, 34);
     
-    printf("the min value of tree: %d\n", findMin(root));
-    printf("the max value of tree: %d\n", findMax(root));
     printf("the min value of tree: %d\n", findMinRe(root));
     printf("the max value of tree: %d\n", findMaxRe(root));
     printf("the height of tree: %d\n", findHeight(root));
+    
+    levelOrder(root);
+    cout<<"\n";
+    preOrder(root);
     
     return 0;
 }

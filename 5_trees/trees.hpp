@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <queue>
 
 #endif /* trees_hpp */
 
@@ -30,6 +31,12 @@ int findMax(BstNode* root);
 int findMinRe(BstNode* root);
 int findMaxRe(BstNode* root);
 int findHeight(BstNode* root);
+
+// 广度优先遍历
+void levelOrder(BstNode* root);
+
+// 深度优先遍历
+void preOrder(BstNode* root);
 
 // 工具函数
 BstNode* GetNewNode(int data);
@@ -118,4 +125,35 @@ int findHeight(BstNode* root) {
         return -1;
     }
     return max(findHeight(root->left), findHeight(root->right)) + 1;
+}
+
+
+void levelOrder(BstNode* root) {
+    if(root == NULL) {
+        return;
+    }
+    queue<BstNode*> Q;
+    Q.push(root);
+    
+    
+    while(!Q.empty()) {
+        BstNode* temp = Q.front();
+        
+        // 遍历到节点并操作
+        cout << temp->data << " ";
+        
+        // 执行下一次遍历前的设置
+        if(temp->left != NULL) Q.push(temp->left);
+        if(temp->right != NULL) Q.push(temp->right);
+        Q.pop();
+    }
+}
+
+void preOrder(BstNode* root) {
+    if(root == NULL) {
+        return;
+    }
+    cout << root->data << " ";
+    if(root->left != NULL) preOrder(root->left);
+    if(root->right != NULL) preOrder(root->right);
 }
