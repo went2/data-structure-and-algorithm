@@ -2,14 +2,11 @@
 
 - 数据结构与算法学习仓。
 
-- 参考资料：
+- 参考资料：[FreeCodeCamp：Data Structures in c/c++](https://www.youtube.com/watch?v=B31LgI4Y4DQ)
 
-[FreeCodeCamp：Data Structures in c/c++](https://www.youtube.com/watch?v=B31LgI4Y4DQ)
+- 笔记目录
 
-
-**笔记目录**
-
-## [Overview](./data-structure-overview.md) 
+## [数据结构概述](./data-structure-overview.md) 
 
 ### 数组
 
