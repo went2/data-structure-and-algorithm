@@ -8,6 +8,8 @@
  * same([1,2,1], [4,4,1]) // false (must be the same frequency)
  */
 
+const { calcTime } = require('../calcTime.js');
+
 // first try: find and delete
 // 遍历数组1，查找数组2中是否有对应的平方值，有则移除，遍历结束返回true。
 // 嵌套循环 O(n^2)
@@ -47,6 +49,12 @@ function same2(arr1, arr2) {
 	return true;
 }
 
-console.log(same2([1, 2, 3], [4, 1, 9]));
-console.log(same2([1, 2, 3], [1, 9]));
-console.log(same2([1, 2, 1], [4, 4, 1]));
+
+calcTime(same1, 'same1')([1, 2, 3], [4, 1, 9]);
+calcTime(same2, 'same2')([1, 2, 3], [4, 1, 9]);
+
+calcTime(same1, 'same1')([1, 2, 3], [1, 9]);
+calcTime(same2, 'same2')([1, 2, 3], [1, 9]);
+
+calcTime(same1, 'same1')([1, 2, 3, 4, 5, 9, 8], [4, 1, 9, 25, 16, 64, 81]);
+calcTime(same2, 'same2')([1, 2, 3, 4, 5, 9, 8], [4, 1, 9, 25, 16, 64, 81]);
