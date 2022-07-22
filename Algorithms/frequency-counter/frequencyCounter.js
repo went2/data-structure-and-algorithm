@@ -1,5 +1,5 @@
 /**
- * same(arr1: number[], arr2: number[]): boolean;
+ * function same(arr1: number[], arr2: number[]): boolean;
  * retuens true if every value in arr2 has corresponding value squared of arr1.
  * the frequency of values must be the same
  *
