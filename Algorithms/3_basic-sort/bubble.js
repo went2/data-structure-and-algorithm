@@ -42,4 +42,4 @@ function bubbleSort2(arr) {
     return arr;
 }
 
-bubbleSort([12, 2, 45, 55, 63, 1, -88, -3, 43, 5, 86]);
+bubbleSort2([12, 2, 45, 55, 63, 1, -88, -3, 43, 5, 86]);
