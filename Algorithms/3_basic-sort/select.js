@@ -23,4 +23,24 @@ function selectSort(arr) {
     return arr;
 }
 
-selectSort([12, 2, 45, 55, 63, 1, -88, -3, 43, 5, 86]);
+// pratices on the next day
+function selectSort2(arr) {
+    const len = arr.length;
+    let minIndex;
+
+    for (let i = 0; i < len; i++) {
+        minIndex = i; // 每轮开始时，将首位设为最小值开始比较
+        for (let j = i + 1; j < len; j++) { // 比较是为了获得本轮最小值的index
+            if (arr[j] < arr[i]) {
+                minIndex = j;
+            }
+        }
+        // swap
+        [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+    }
+    console.log(arr);
+    return arr;
+}
+
+selectSort2([12, 2, 45, 55, 63, 1, -88, -3, 43, 5, 86]);
+selectSort2([10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -1]);

@@ -42,4 +42,23 @@ function bubbleSort2(arr) {
     return arr;
 }
 
-bubbleSort2([12, 2, 45, 55, 63, 1, -88, -3, 43, 5, 86]);
+// practices
+function bubbleSort3(arr) {
+    const len = arr.length;
+    let noSwaps;
+
+    for (let i = len - 1; i > 0; i--) {
+        noSwaps = true;
+        for (let j = 0; j < i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+                noSwaps = false;
+            }
+        }
+        if (noSwaps) break;
+    }
+    console.log(arr);
+    return arr;
+}
+
+bubbleSort3([12, 2, 45, 55, 63, 1, -88, -3, 43, 5, 86]);
